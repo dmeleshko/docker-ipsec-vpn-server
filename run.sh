@@ -30,7 +30,7 @@ check_ip() {
   printf '%s' "$1" | tr -d '\n' | grep -Eq "$IP_REGEX"
 }
 
-if [ ! -f "/.dockerenv" ]; then
+if [ ! -f "/.dockerenv" ] || [ ! -f "/.containerenv" ]; then
   exiterr "This script ONLY runs in a Docker container."
 fi
 
